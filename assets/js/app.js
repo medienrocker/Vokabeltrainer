@@ -33,7 +33,7 @@ class VocaBlitzApp {
     }
 
     async init() {
-        console.log('VocaBlitz App initializing...');
+        // console.log('VocaBlitz App initializing...');
         
         // UI initialisieren
         UI.init();
@@ -47,7 +47,7 @@ class VocaBlitzApp {
         // App-Content anzeigen
         this.showAppContent();
         
-        console.log('VocaBlitz App initialized');
+        // console.log('VocaBlitz App initialized');
     }
 
     setupEventListeners() {
@@ -63,9 +63,9 @@ class VocaBlitzApp {
         });
 
         // List Selection
-        document.getElementById('selectListBtn')?.addEventListener('click', () => {
-            this.showListSelector();
-        });
+        // document.getElementById('selectListBtn')?.addEventListener('click', () => {
+        //     this.showListSelector();
+        // });
 
         document.getElementById('selectListBtnEmpty')?.addEventListener('click', () => {
             this.showListSelector();

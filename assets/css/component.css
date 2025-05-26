@@ -1,5 +1,5 @@
 /**
- * VoKaBlitz Components Stylesheet
+ * VocaBlitz Components Stylesheet
  * Datei: assets/css/components.css
  */
 
@@ -920,4 +920,305 @@
     .stat-value {
         font-size: var(--font-size-2xl);
     }
+}
+
+
+
+/* =================================
+   MICRO-INTERACTIONS & PREMIUM UX
+   ================================= */
+
+/* Haptic-Feel Button Feedback */
+.btn-haptic {
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0); /* Hardware acceleration */
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-haptic::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.btn-haptic:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+.btn-haptic:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Pulse Animation für Aufmerksamkeit */
+.pulse-attention {
+    animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.4);
+    }
+    50% { 
+        transform: scale(1.02);
+        box-shadow: 0 0 0 10px rgba(67, 97, 238, 0);
+    }
+}
+
+/* Card Hover Effects */
+.card-hover-premium {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-hover-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.card-hover-premium:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(67, 97, 238, 0.15);
+}
+
+.card-hover-premium:hover::before {
+    left: 100%;
+}
+
+/* Glass Morphism Effect */
+.glass-card {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.glass-card-dark {
+    background: rgba(67, 97, 238, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(67, 97, 238, 0.2);
+}
+
+/* Gradient Borders */
+.gradient-border {
+    position: relative;
+    background: white;
+    border-radius: var(--border-radius-xl);
+}
+
+.gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    background: linear-gradient(45deg, var(--primary), var(--accent), var(--secondary));
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
+}
+
+/* Success Ripple Effect */
+.success-ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.success-ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(74, 222, 128, 0.6) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: successRipple 0.6s ease-out;
+}
+
+@keyframes successRipple {
+    to {
+        width: 200px;
+        height: 200px;
+        opacity: 0;
+    }
+}
+
+/* Error Shake Animation */
+.error-shake {
+    animation: errorShake 0.5s ease-in-out;
+}
+
+@keyframes errorShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Loading Shimmer */
+.loading-shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Interactive Focus States */
+.focus-ring {
+    transition: all 0.2s ease;
+}
+
+.focus-ring:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3);
+    transform: scale(1.02);
+}
+
+/* Floating Labels Animation */
+.floating-label {
+    position: relative;
+}
+
+.floating-label input:focus + label,
+.floating-label input:not(:placeholder-shown) + label {
+    transform: translateY(-120%) scale(0.8);
+    color: var(--primary);
+}
+
+.floating-label label {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    color: #666;
+    background: white;
+    padding: 0 4px;
+}
+
+/* Achievement Badge Animation */
+.achievement-badge {
+    transform: scale(0);
+    opacity: 0;
+    animation: achievementPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+@keyframes achievementPop {
+    0% {
+        transform: scale(0) rotate(-180deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2) rotate(-90deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+/* Smooth Page Transitions */
+.page-transition {
+    animation: pageSlideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes pageSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Interactive Progress Bar */
+.progress-interactive {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.progress-interactive:hover {
+    transform: scaleY(1.2);
+}
+
+.progress-interactive::after {
+    content: attr(data-progress);
+    position: absolute;
+    top: -30px;
+    left: var(--progress-position, 0%);
+    transform: translateX(-50%);
+    background: var(--dark);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.progress-interactive:hover::after {
+    opacity: 1;
+}
+
+/* Magnetic Button Effect */
+.btn-magnetic {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.btn-magnetic:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(67, 97, 238, 0.3);
+}
+
+.btn-magnetic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    filter: blur(8px);
+    z-index: -1;
+}
+
+.btn-magnetic:hover::before {
+    opacity: 0.3;
+    animation: magneticGlow 1s ease infinite alternate;
+}
+
+@keyframes magneticGlow {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
 }

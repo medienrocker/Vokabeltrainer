@@ -94,9 +94,7 @@ $currentUser = $isLoggedIn ? $_SESSION['user'] : null;
                 <div class="section-header">
                     <h2>Vokabeltrainer</h2>
                     <div class="section-actions">
-                        <button class="btn btn-secondary" id="selectListBtn">
-                            <i class="fas fa-list"></i> Liste wählen
-                        </button>
+                        <!-- hier war mal die Listenauswahl als buttton -->
                     </div>
                 </div>
 
