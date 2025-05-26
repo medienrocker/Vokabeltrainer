@@ -1,0 +1,22 @@
+# PHP-Ausführung in uploads verbieten
+<Files "*.php">
+    Require all denied
+</Files>
+
+# Nur bestimmte Dateitypen erlauben
+<FilesMatch "\.(csv|txt|jpg|jpeg|png|gif|pdf)$">
+    Require all granted
+</FilesMatch>
+
+# Alles andere verbieten
+<FilesMatch "^.*$">
+    Require all denied
+</FilesMatch>
+
+# Für ältere Apache-Versionen
+<IfModule !mod_authz_core.c>
+    <Files "*.php">
+        Order deny,allow
+        Deny from all
+    </Files>
+</IfModule>

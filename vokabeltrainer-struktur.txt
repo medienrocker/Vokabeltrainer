@@ -1,0 +1,61 @@
+vokabeltrainer/
+│
+├── index.php               # Hauptseite der Anwendung
+├── login.php               # Login/Registrierungsseite
+├── dashboard.php           # Übersichtsseite (nach Login)
+│
+├── assets/                 # Frontend-Ressourcen
+│   ├── css/                # Stylesheets
+│   │   ├── main.css
+│   │   └── components.css
+│   │
+│   ├── js/                 # JavaScript-Dateien
+│   │   ├── app.js          # Hauptlogik der App
+│   │   ├── trainer.js      # Vokabeltraining-Funktionen
+│   │   └── ui.js           # UI-Komponenten
+│   │
+│   └── img/                # Bilder und Grafiken
+│
+├── includes/               # PHP-Hilfsdateien und Klassen
+│   ├── db_connect.php      # Datenbankverbindung
+│   ├── config.php          # Konfigurationseinstellungen
+│   ├── functions.php       # Allgemeine Funktionen
+│   ├── vocabulary_lists.php # Vokabellisten-Verwaltung
+│   ├── spaced_repetition.php # Lernalgorithmus
+│   └── users.php           # Benutzerverwaltung
+│
+├── api/                    # API-Endpunkte für AJAX-Anfragen
+│   ├── get_vocabulary_lists.php
+│   ├── get_vocabulary_items.php
+│   ├── process_answer.php
+│   ├── save_leaderboard.php
+│   ├── upload_vocabulary.php
+│   └── user/
+│       ├── login.php
+│       ├── register.php
+│       └── profile.php
+│
+├── admin/                  # Administrationsbereich (für Lehrer)
+│   ├── index.php           # Dashboard
+│   ├── list_manager.php    # Vokabellisten verwalten
+│   ├── user_manager.php    # Benutzer verwalten
+│   └── stats.php           # Statistiken
+│
+├── components/                  # Administrationsbereich (für Lehrer)
+│   ├── csv_uploader.php
+│
+├── vocabularies/           # Vokabellisten-Speicher
+│   ├── grundwortschatz.csv
+│   ├── alltagsphrasen.csv
+│   └── ...
+│
+├── uploads/                # Temporärer Ordner für Uploads
+│   └── .htaccess           # Zugriffsbeschränkung
+│
+├── cache/                  # Cache-Verzeichnis (optional)
+│   └── .htaccess           # Zugriffsbeschränkung
+│
+├── vendor/                 # Externe Bibliotheken (optional)
+│
+├── .htaccess               # Hauptkonfiguration für Apache
+└── README.md               # Dokumentation
